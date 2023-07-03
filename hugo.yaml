@@ -1,0 +1,156 @@
+baseURL: 'https://cv.jetexe.net/'
+languageCode: en
+title: Pavel Tetiuev - Senior Golang Engineer
+theme: hugo-devresume-theme
+params:
+  author: Pavel Tetiuev
+  primaryColor: '#276d98'
+  textPrimaryColor: '#292929'
+  profile:
+    enable: true
+    name: Pavel Tetiuev
+    tagline: Senior Software Engineer
+    avatar: photo.jpg
+  contact:
+    enable: true
+    location: Batumi, Georgia
+    list:
+      - icon: fab fa-telegram
+        url: 'https://t.me/jetexe'
+        text: "@jetexe"
+      - icon: fas fa-envelope-square
+        url: 'mailto:hr@jetexe.net'
+        text: hr@jetexe.net
+  skills:
+    enable: true
+    list:
+      - title: Technical
+        items:
+          - details: Go
+          - details: Docker
+          - details: gRPC
+          - details: PostgreSQL
+          - details: MongoDB
+          - details: CI/CD
+          - details: Redis
+          - details: RabbitMQ
+          - details: Kafka
+          - details: GitHub Actions
+          - details: GitLab CI
+          - details: AWS
+          - details: PHP/Laravel
+      - title: Professional
+        items:
+          - details: Team player
+          - details: Strong problem solver
+  education:
+    enable: true
+    list:
+      - degree: Applied mathematics and computer science
+        university: Ural State University A.M. Gorky
+        dates: 2013 - 2016
+  languages:
+    enable: true
+    list:
+      - name: English
+        level: B1
+      - name: Russian
+        level: Native
+  interests:
+    enable: true
+    list:
+      - name: Guitar
+      - name: Swimming
+  summary:
+    enable: true
+    text: |-
+      I like to make things better: faster, safer, more flexible, and more comfortable.
+      I want to create the best services and learn something new every day!
+      In my free time I like playing guitar, swimming and spending time with my family.
+  experience:
+    enable: true
+    list:
+      - title: Senior Software Engineer
+        dates: 2022 - Present
+        company: Vacuumlabs
+        details: |-
+          Building neo bank from scratch using microservices architecture, technologically
+          agnostic environment, and self-managed micro teams. Starting with onboarding,
+          accounts, payments, and building React Native mobile applications. Also working on
+          credit loans using Smart Contracts in Thought Machine Vault.
+        items:
+          - details: CI/CD
+          - details: GitHub Actions
+          - details: Kafka
+          - details: AWS
+      - title: Senior Go Developer
+        dates: 2020 - 2022
+        company: SpectrumData
+        details: |-
+          Vehicle Insurance conveyor.
+
+          The vehicle Insurance conveyor is a system that collects information about vehicles,
+          drivers, and owners from several sources and calculates insurance policy prices.
+
+          My contribution:
+          Designed the platform and developed a large part of the system.
+
+          Highlights:
+          Fully gRPC network between the services of the conveyor. Each service of the system can
+          get any part of data from the integration level, which allows to build a very flexible product.
+
+          Also created a list of services that helps improve whole company performance under high RPS load.
+
+        items:
+          - details: Go
+          - details: Docker
+          - details: gRPC
+          - details: MongoDB
+          - details: CI/CD
+          - details: PostgreSQL
+          - details: RabbitMQ
+          - details: GitLab CI
+          - details: Microservices
+
+      - title: Team Leader
+        dates: 2017 - 2020
+        company: SpectrumData
+        details: >-
+          Avtocod.ru
+
+          A vehicle information service. If you know what Carfax is, you know that the "Avtocod"
+          does.
+
+          My contribution:
+          - Developing and maintaining the website
+          - Leading development command
+          - Web sockets integrationAvtocod.ru A vehicle information service. If you know what Carfax is, you know that the "Avtocod" does. My contribution: - Developing and maintaining the website - Leading development command - Web sockets integration
+
+        items:
+          - details: Docker
+          - details: CI/CD
+          - details: Redis
+          - details: PostgreSQL
+          - details: RabbitMQ
+          - details: GitlabCI
+          - details: PHP/Laravel/RoadRunner
+      - title: Freelance
+        dates: 2012 - 2016
+        details: >-
+          Creation of websites, online stores. 
+          During the activity there was created a tool for building end-to-end analytics for online stores.
+
+  projects:
+    enable: false
+
+  information:
+    enable: false
+  social:
+    enable: true
+    list:
+      - icon: fab fa-github-square
+        url: https://github.com/jetexe
+        title: jetexe
+      - icon: fab fa-linkedin
+        url: https://linkedin.com/in/jetexe
+        title: jetexe
