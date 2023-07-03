@@ -1,23 +1,27 @@
 @media (prefers-color-scheme: dark) {
   html {
-    background-color: #181a1b !important;
+    background-color: #181a1b;
   }
 
   body {
-    color: rgb(181, 174, 165) !important;
-    background-color: rgb(24, 26, 27) !important;
+    color: rgb(181, 174, 165);
+    background-color: rgb(24, 26, 27);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: rgb(206, 202, 195) !important;
+    color: rgb(206, 202, 195);
   }
 
   a.resume-link {
-    color: rgb(182, 176, 166) !important;
+    color: rgb(182, 176, 166);
   }
 
   .text-muted {
-    color: rgb(157, 149, 136) !important;
+    color: rgb(157, 149, 136);
   }
 
+  a.theme-link {
+    color: rgb(206, 202, 195);
+    text-decoration-color: rgba(206, 202, 195, 0.3);
+  }
 }
