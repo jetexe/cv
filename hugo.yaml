@@ -70,8 +70,16 @@ params:
   experience:
     enable: true
     list:
+      - title: Senior Go Developer
+        dates: 2023-2025
+        company: SpiralScout
+        details: |-
+          Developing high throughput video processing system using FFMPEG.
+          Building processing worklfow around Temporal.
+          We are developing custom scaling logic in Kubernetes, which is based on a number of service metrics.
+          This allows us to proactively accept new AWS nodes and process hours of video footage in just minutes.
       - title: Senior Software Engineer
-        dates: 2022 - Present
+        dates: 2022 - 2023
         company: Vacuumlabs
         details: |-
           Building neo bank from scratch using microservices architecture, technologically
