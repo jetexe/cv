@@ -24,8 +24,7 @@ params:
   skills:
     enable: true
     list:
-      - title: Technical
-        items:
+      - items:
           - details: Go
           - details: Docker
           - details: gRPC
@@ -38,22 +37,20 @@ params:
           - details: GitHub Actions
           - details: GitLab CI
           - details: AWS
-          - details: PHP/Laravel
-      - title: Professional
-        items:
-          - details: Team player
-          - details: Strong problem solver
+          - details: Temporal
+          - details: Kubernetes
+          - details: Thought Machine Vault
   education:
     enable: true
     list:
-      - degree: Applied mathematics and computer science
+      - degree: Applied mathematics and computer science (undergraduate)
         university: Ural State University A.M. Gorky
         dates: 2013 - 2016
   languages:
     enable: true
     list:
       - name: English
-        level: B1
+        level: B1-B2
       - name: Russian
         level: Native
   interests:
@@ -61,25 +58,66 @@ params:
     list:
       - name: Guitar
       - name: Swimming
+      - name: Photography
   summary:
     enable: true
     text: |-
-      I like to make things better: faster, safer, more flexible, and more comfortable.
-      I want to create the best services and learn something new every day!
-      In my free time I like playing guitar, swimming and spending time with my family.
+      Senior Go Developer with 10+ years of experience in building scalable microservices, high-load systems, and fintech solutions. Expert in Kubernetes, Temporal, and performance optimization. Proven track record of reducing infrastructure costs and designing complex system architectures from scratch
+      I like to make things better: faster, safer, more flexible, and more comfortable. I want to
+      create the best services and learn something new every day!
+      In my free time I like playing guitar, taking photo and spending time with my family.
   experience:
     enable: true
     list:
-      - title: Senior Go Developer
+      - title: Wippy
+        dates: 2025-2026
+        company: SpiralScout
+        details: |-
+          Creating a platform for runing AI-generated code in isolated environments using Wippy Runtime.
+          
+          Platform incudes:
+          - Secrets managment
+          - Custom Kubernetes controller
+          - State managment system
+          - Kubernetes resources managment system
+
+        items:
+          - details: Go
+          - details: Kubernetes
+          - details: Temporal
+          - details: AWS
+          - details: PostgreSQL
+          - details: Keycloak
+
+      - title: Video processing system
         dates: 2023-2025
         company: SpiralScout
         details: |-
-          Developing high throughput video processing system using FFMPEG.
-          Building processing worklfow around Temporal.
-          We are developing custom scaling logic in Kubernetes, which is based on a number of service metrics.
-          This allows us to proactively accept new AWS nodes and process hours of video footage in just minutes.
-      - title: Senior Software Engineer
-        dates: 2022 - 2023
+          The development of a high-performance video conversion and normalisation system provided a set of video resolutions for each user-uploaded video for marketing purposes.
+          A Kubernetes autoscaling algorithm was built to optimise server costs and provide high throughput
+
+        items:
+          - details: Go
+          - details: Kubernetes
+          - details: Temporal
+          - details: AWS
+          - details: Kafka
+          - details: FFMPEG
+
+      - title: Thought Machine smart-contract framework
+        dates: 2023 · 5 mos
+        company: Vacuumlabs
+        details: |-
+          Architected and developed a Thought Machine smart-contract framework for core banking operations
+          (loans, mortgages, savings, and deposits).
+          The framework streamlined development by providing a robust testing library, utility functions,
+          and standardized contract templates.
+        items:
+          - details: Thought Machine Vault
+          - details: Temporal
+          - details: AWS
+      - title: Demo bank
+        dates: 2022 - 2023 · 7 mos
         company: Vacuumlabs
         details: |-
           Building neo bank from scratch using microservices architecture, technologically
@@ -91,23 +129,23 @@ params:
           - details: GitHub Actions
           - details: Kafka
           - details: AWS
-      - title: Senior Go Developer
-        dates: 2020 - 2022
+          - details: Temporal
+
+      - title: Vehicle Insurance conveyor
+        dates: 2020 - 2022 · 2 yrs 2 mos
         company: SpectrumData
         details: |-
-          Vehicle Insurance conveyor.
-
           The vehicle Insurance conveyor is a system that collects information about vehicles,
           drivers, and owners from several sources and calculates insurance policy prices.
-
+          
           My contribution:
           Designed the platform and developed a large part of the system.
-
+          
           Highlights:
           Fully gRPC network between the services of the conveyor. Each service of the system can
-          get any part of data from the integration level, which allows to build a very flexible product.
-
-          Also created a list of services that helps improve whole company performance under high RPS load.
+          get any part of data from the integration level, which allows to build a very flexible product
+          
+          Also created a list of services that helps improve whole company performance under high RPS load
 
         items:
           - details: Go
@@ -118,21 +156,18 @@ params:
           - details: PostgreSQL
           - details: RabbitMQ
           - details: GitLab CI
-          - details: Microservices
 
-      - title: Team Leader
-        dates: 2017 - 2020
+      - title: Avtocod.ru
+        dates: 2017 - 2020 · 2 yrs 10 mos
         company: SpectrumData
         details: >-
-          Avtocod.ru
-
           A vehicle information service. If you know what Carfax is, you know that the "Avtocod"
           does.
 
           My contribution:
-          - Developing and maintaining the website
           - Leading development command
-          - Web sockets integrationAvtocod.ru A vehicle information service. If you know what Carfax is, you know that the "Avtocod" does. My contribution: - Developing and maintaining the website - Leading development command - Web sockets integration
+          - Developing and maintaining the website
+          - Web sockets integration
 
         items:
           - details: Docker
@@ -141,12 +176,17 @@ params:
           - details: PostgreSQL
           - details: RabbitMQ
           - details: GitlabCI
+          - details: Keycloak
+          - details: Temporal
           - details: PHP/Laravel/RoadRunner
       - title: Freelance
-        dates: 2012 - 2016
+        dates: 2012 - 2016 · 4 yrs 2 mos
         details: >-
-          Creation of websites, online stores. 
-          During the activity there was created a tool for building end-to-end analytics for online stores.
+          Creation of websites, e-commerce stores. 
+          During the activity there was created a tool for building end-to-end analytics
+      - title: Consultant Programmer
+        company: Agent5
+        dates: 2012 - 2014 · 2 yrs 4 mos
 
   projects:
     enable: false
