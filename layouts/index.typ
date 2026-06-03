@@ -64,12 +64,12 @@
 
 == Work Experience
 {{ range .Site.Params.experience.list }}
-=== {{ .title }} \
-{{ if .company -}}{{ .company }} | {{ end -}}{{ .dates }}
+=== {{ if .company }}{{ .company }}{{ else }}{{ .title }}{{ end }} \
+{{ .title }} | {{ .dates }}
 
 {{ if .details }}#render({{ printf "%q" .details }}){{ end }}
 {{ if .items }}
-==== Core Technologies
+Core Technologies:
 #pad(left: 1em)[
 
 #inline-list((
