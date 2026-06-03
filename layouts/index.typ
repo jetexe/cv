@@ -52,7 +52,7 @@
 
 == Summary
 
-#render("{{ .Site.Params.summary.text | htmlEscape }}")
+#render({{ printf "%q" .Site.Params.summary.text }})
 
 == Core Expertise
 
@@ -67,7 +67,7 @@
 === {{ .title }} \
 {{ if .company -}}{{ .company }} | {{ end -}}{{ .dates }}
 
-{{ if .details }}#render("{{ .details }}"){{ end }}
+{{ if .details }}#render({{ printf "%q" .details }}){{ end }}
 {{ if .items }}
 ==== Core Technologies
 #pad(left: 1em)[
