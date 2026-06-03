@@ -40,6 +40,7 @@ jobs:
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Install Dart Sass
         run: sudo snap install dart-sass
+      - uses: typst-community/setup-typst@v5
       - name: Checkout
         uses: actions/checkout@v6
         with:
@@ -60,6 +61,9 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Build with Typst
+        run: typst compile public/cv.typ public/cv.pdf
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
