@@ -53,7 +53,7 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
 
       - name: Setup Dart Sass
-        run: snap install dart-sass
+        run: sudo snap install dart-sass
 
       - name: Setup Typst
         uses: typst-community/setup-typst@v5
