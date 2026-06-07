@@ -53,7 +53,9 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
 
       - name: Setup Dart Sass
-        run: npm install -g sass
+        run: |
+          npm install -g sass
+          echo "$(npm config get prefix)/bin" >> $GITHUB_PATH
 
       - name: Setup Typst
         uses: typst-community/setup-typst@v5
