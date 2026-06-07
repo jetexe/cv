@@ -1,0 +1,12 @@
+<section class="skills-section">
+  <h2>Skills</h2>
+
+  {{ range .Site.Params.skills.list }}
+  {{ if .title }}<h4 class="item-title">{{ .title }}</h4>{{ end }}
+  <ul class="resume-skills-list">
+    {{ range .items }}
+    <li>{{ with . }}{{ . | markdownify }}{{ end }}</li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</section>

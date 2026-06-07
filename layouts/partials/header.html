@@ -1,0 +1,24 @@
+<header class="container">
+  <div class="resume-header">
+    {{ if .Site.Params.profile.enable }}
+    <div class="resume-title">
+      <h1 class="resume-name">{{ .Site.Params.profile.name }}</h1>
+      <p class="resume-tagline">{{ .Site.Params.profile.tagline }}</p>
+    </div><!--//resume-title-->
+    {{ end }}
+
+    {{ if .Site.Params.contact.enable }}
+    <div class="resume-contact">
+      <ul>
+        {{ range .Site.Params.contact.list }}
+        <li>{{ partial "faicon.html" (dict "icon" .icon "class" "fa-fw fa-lg") }}<a class="resume-link" href="{{ .url | safeURL }}">{{ .text }}</a>        </li>
+        {{ end }}
+        <li>{{ partial "faicon.html" (dict "icon" "fa-solid fa-map-marker-alt" "class" "fa-fw fa-lg") }}{{ .Site.Params.contact.location }}</li>
+      </ul>
+    </div><!--//resume-contact-->
+
+    {{ end }}
+  </div>
+
+
+</header><!--//resume-header-->

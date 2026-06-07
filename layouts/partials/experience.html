@@ -1,25 +1,40 @@
+<section class="work-section">
+  {{ if .Site.Params.experience.core }}
+  <h2>Core Expertise</h2>
 
-                            <section class="work-section py-3">
+  <ul class="core-expertise">
+    {{ range .Site.Params.experience.core }}
+    <li>{{ . }}</li>
+    {{ end }}
+  </ul>
+  <hr>
+  {{ end }}
+  <h2>Work Experience</h2>
 
-                                <h3 class="text-uppercase resume-section-heading mb-4">{{ i18n "experiences" }}</h3>
+  {{ range .Site.Params.experience.list }}
+  <div class="item">
+    <div class="item-heading">
+      <h3 class="item-company">{{ .company }}</h3>
+    </div>
+    <ul class="timeline">
+      {{ range .products }}
+      <li class="timeline-item">
+        <div class="item-content">
+          <hgroup>
+            {{ if .title }}<b>{{ .title }}</b>{{ end }}
+            <p class="dates">{{ .dates }}</p>
+          </hgroup>
 
-                                {{ range .Site.Params.experience.list }}
-                                <div class="item mb-3">
-                                    <div class="item-heading row align-items-center mb-2">
-                                        <h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">{{ .company }}</h4>
-                                        <div class="item-meta col-12 col-md-6 col-lg-6 text-muted text-left text-md-right">{{ .title }} | {{ .dates }}</div>
-                                    </div>
-                                    <div class="item-content">
-                                        <p>{{ with .details }}{{ . | markdownify }}{{ end }}</p>
-                                        {{ if .items }}<p>{{ i18n "core Technologies" }}:</p>{{ end }}
-                                        <p>
-                                        {{- range $index, $item := .items -}}
-                                            {{- if $index }} • {{ end -}}
-                                            {{ with $item.details }}{{ . | markdownify }}{{ end }}
-                                        {{ end -}}
-                                        </p>
-                                    </div>
-                                </div><!--//item-->
-                                {{ end }}
-
-                            </section><!--//work-section-->
+          <p class="details">{{ with .details }}{{ . | markdownify }}{{ end }}</p>
+          {{ if .skills }}
+          <p class="skills">
+            {{ delimit (apply .skills "printf" "<b>%s</b>" ".") " • " | safeHTML }}
+          </p>
+          {{ end }}
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+</section>

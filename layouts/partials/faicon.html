@@ -1,0 +1,20 @@
+{{- $pack := "" -}}
+
+{{- if strings.Contains .icon "fa-brands" -}}
+  {{- $pack = "brands" -}}
+{{- else if strings.Contains .icon "fa-regular" -}}
+  {{- $pack = "regular" -}}
+{{- else if strings.Contains .icon "fa-solid" -}}
+  {{- $pack = "solid" -}}
+{{- else -}}
+  {{- warnf "unknown icon pack: %s" .icon -}}
+{{- end -}}
+
+{{- range (split .icon " ") -}}
+  {{- $iconPath := replace . "fa-" "" | strings.TrimSpace | printf "icons/%s/%s.svg" $pack -}}
+  {{- $icon := resources.Get $iconPath -}}
+  {{- if $icon -}}
+    {{- replace $icon.Content "<svg" (printf `<svg class="svg-inline--fa %s %s"` ($.class | default "") $.icon) 1 | safeHTML -}}
+    {{- break -}}
+  {{- end -}}
+{{- end -}}

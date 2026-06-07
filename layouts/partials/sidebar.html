@@ -1,0 +1,17 @@
+<section>
+  {{ if .Site.Params.skills.enable }}
+  {{ partial "sidebar/skills.html" . }}
+  {{ end }}
+
+  {{ if .Site.Params.education.enable }}
+  {{ partial "sidebar/education.html" . }}
+  {{ end }}
+
+  {{ if .Site.Params.languages.enable }}
+  {{ partial "sidebar/languages.html" . }}
+  {{ end }}
+
+  {{ if .Site.Params.interests.enable }}
+  {{ partial "sidebar/interests.html" . }}
+  {{ end }}
+</section>

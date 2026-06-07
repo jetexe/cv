@@ -32,25 +32,46 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.162.0
+      HUGO_CACHEDIR: /tmp/hugo_cache
     steps:
-      - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
-      - name: Install Dart Sass
-        run: sudo snap install dart-sass
-      - uses: typst-community/setup-typst@v5
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          cache: "npm"
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.162.1'
+          extended: true
+
+      - name: Setup Dart Sass
+        run: npm install -g sass
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v5
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v6
+
       - name: Checkout
         uses: actions/checkout@v6
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v6
+
       - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+        run: npm ci
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ env.HUGO_CACHEDIR }}
+          key: ${{ runner.os }}-hugo-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugo-
+
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
@@ -61,8 +82,12 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+
       - name: Build with Typst
         run: typst compile public/cv.typ public/cv.pdf
+
+      - name: Remove unnecessary files
+        run: rm -rf public/cv.typ
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5

@@ -1,0 +1,15 @@
+<section class="education-section">
+  <h2>Education</h2>
+
+  <ul class="resume-education-list">
+    {{ range .Site.Params.education.list }}
+    <li>
+      <hgroup>
+        <p class="resume-degree"><b>{{ .degree }}</b></p>
+        <p class="resume-degree-org">{{ .university }}</p>
+        <p class="resume-degree-time">{{ .dates }}</p>
+      </hgroup>
+    </li>
+    {{ end }}
+  </ul>
+</section>

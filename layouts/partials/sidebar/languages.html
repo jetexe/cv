@@ -1,0 +1,9 @@
+<section class="skills-section">
+  <h2>Languages</h2>
+
+  <ul class="resume-lang-list">
+    {{ range .Site.Params.languages.list }}
+    <li>{{ .name }} <span>({{ .level }})</span></li>
+    {{ end }}
+  </ul>
+</section>

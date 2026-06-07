@@ -33,20 +33,29 @@
   }
 }
 
+#let flexible-image(path) = layout(size => context {
+  let img-width = measure(image(path)).width
+  let target-width = calc.min(img-width, size.width)
+  image(path, width: target-width)
+})
+
 #grid(
   columns: (4fr, 1fr),
-  [= #upper("{{ .Site.Params.profile.name }}") \
-  {{ .Site.Params.profile.tagline }} \
-  {{ .Site.Params.contact.location }}
+  [
+    = #upper("{{ .Site.Params.profile.name }}") \
+    {{ .Site.Params.profile.tagline }} \
+    {{ .Site.Params.contact.location }}
 
-  {{ range .Site.Params.contact.list -}}
-  {{ .type }}: #link("{{ .url }}") \
-  {{ end }}
+    {{ range .Site.Params.contact.list -}}
+    {{ .type }}: #link("{{ .url }}") \
+    {{ end }}
   ],
   [
-  #align(right + horizon)[
-    #image("assets/images/photo.jpg", height: 90pt, fit: "contain")
-  ]
+    #align(right + horizon)[
+    {{ with resources.Get "images/photo.jpg" }}
+      #flexible-image("{{ .RelPermalink }}")
+    {{ end }}
+    ]
   ],
 )
 
@@ -57,48 +66,47 @@
 == Core Expertise
 
 #list(
-{{- range .Site.Params.experience.core }}
-    [{{ . }}],
-{{- end -}}
+  {{- range .Site.Params.experience.core }}
+      [{{ . }}],
+  {{- end -}}
 )
 
 == Work Experience
+
 {{ range .Site.Params.experience.list }}
-=== {{ if .company }}{{ .company }}{{ else }}{{ .title }}{{ end }} \
-{{ .title }} | {{ .dates }}
+  === {{ .company }}
+  #list(
+  spacing: 2em,
+  {{ range .products }}
+  [
+    #block(breakable: false)[
+      {{ if .title }}*{{ .title }}*{{ end }}
+      {{ .dates }}
 
-{{ if .details }}#render({{ printf "%q" .details }}){{ end }}
-{{ if .items }}
-Core Technologies:
-#pad(left: 1em)[
+      #render({{ printf "%q" .details }})
 
-#inline-list((
-{{- end -}}
-{{ range .items }}
-     "{{ .details }}",
-{{- end }}
-{{- if .items }}
-), delimiter: " • ")
-
-]
-{{- end }}
-{{- end -}}
-
-{{- if .Site.Params.education -}}
-== Education
-
-{{ range .Site.Params.education.list }}
-=== {{ .university }}({{ .dates }})
-{{ .degree }}
+      {{ delimit (apply .skills "printf" "*%s*" ".") " • " }}
+    ]
+  ],
+  {{ end }}
+  )
 {{ end }}
+
+{{- if .Site.Params.education }}
+== Education
+#list(
+  {{ range .Site.Params.education.list }}
+  [
+  *{{ .degree }}* \
+  {{ .university }} \
+  {{ .dates }}
+  ],
+  {{ end }}
+)
 {{ end }}
 
 == Languages
 
 {{- range .Site.Params.languages.list }}
-    {{ .name }} \
-    {{ .level }}
-
-
-{{ end -}}
-
+    {{ .name }} ({{ .level }}) \
+{{- end }}

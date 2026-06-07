@@ -1,0 +1,18 @@
+<div class="resume-intro">
+  {{ if .Site.Params.profile.avatar }}
+  {{ with resources.Get (printf "images/%s" .Site.Params.profile.avatar) }}
+  <img class="resume-profile-image" src="{{ .RelPermalink }}" alt="image">
+  {{ end }}
+  {{ end }}
+
+  <div class="summary">
+    <div class="row">
+      <p>{{ .Site.Params.summary.text | markdownify }}</p>
+    </div>
+    <div class="row">
+      <a role="button" href="/cv.pdf" download="{{ with .Site.Params.profile}}{{ .name }} {{ .tagline }}.pdf{{ end }}">
+        Download PDF
+      </a>
+    </div>
+  </div>
+</div><!--//resume-intro-->

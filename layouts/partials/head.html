@@ -7,13 +7,24 @@
 <meta name="description" content="{{ .Site.Params.description }}">
 <meta name="author" content="{{ .Site.Params.author }}">
 
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-<!-- Google Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900">
-<!-- Theme SCSS -->
-{{ $style := resources.Get "scss/devresume.scss" | resources.ExecuteAsTemplate "scss/devresume.scss" . | toCSS (dict "targetPath" "assets/css/devresume.css") | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $style.Permalink }}">
-
-{{ $custom := resources.Get "scss/custom.scss" | resources.ExecuteAsTemplate "scss/custom.scss" . | toCSS (dict "targetPath" "assets/css/custom.css") | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $custom.Permalink }}">
+{{ $opts := dict
+"enableSourceMap" (not hugo.IsProduction)
+"outputStyle" (cond hugo.IsProduction "compressed" "expanded")
+"transpiler" "dartsass"
+"includePaths" (slice "node_modules")
+"vars" (dict "primary-color" .Site.Params.primaryColor)
+}}
+{{ with resources.Get "scss/main.scss" }}
+  {{ with . | toCSS $opts }}
+    {{ if hugo.IsProduction }}
+      {{ with . | postCSS | minify | fingerprint | resources.PostProcess }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+      {{ end }}
+    {{ else }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ end }}
+  {{ end }}
+{{ end }}

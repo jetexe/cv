@@ -3,6 +3,7 @@
 /resources/_gen/
 /assets/jsconfig.json
 hugo_stats.json
+node_modules
 
 # Executable may be added to repository
 hugo.exe
@@ -11,6 +12,7 @@ hugo.linux
 
 # Temporary lock file while building
 /.hugo_build.lock
+
 # If you prefer the allow list template instead of the deny list, see community template:
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 #
