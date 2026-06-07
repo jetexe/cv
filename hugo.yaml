@@ -1,7 +1,12 @@
 # yaml-language-server: $schema=https://json.schemastore.org/hugo.json
 
 baseURL: 'https://cv.jetexe.net/'
-languageCode: en
+languages:
+  en:
+    locale: "en_US"
+    label: "English"
+    weight: 1
+
 title: Pavel Tetiuev - Senior Backend Engineer (Go)
 params:
   author: Pavel Tetiuev

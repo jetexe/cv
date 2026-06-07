@@ -56,6 +56,7 @@ jobs:
         run: |
           npm install -g sass
           echo "$(npm config get prefix)/bin" >> $GITHUB_PATH
+          sass --version
 
       - name: Setup Typst
         uses: typst-community/setup-typst@v5
