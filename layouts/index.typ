@@ -1,4 +1,4 @@
-#import "@preview/cmarker:0.1.8": render
+#import "@preview/cmarker:0.1.9": render
 
 #set page(
   paper: "a4",
